@@ -223,7 +223,6 @@ const menuHTML = menuItems
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div class="container">
-    <!-- Navigation -->
     <header class="navbar">
       <div class="nav-content">
         <div class="logo-section">
@@ -239,7 +238,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     </header>
 
     <main>
-      <!-- Hero Section -->
       <section class="hero">
         <div class="hero-content">
           <img src="/kopiipklogo.png" alt="Kopi IPK Hero" class="hero-logo">
@@ -249,7 +247,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
         </div>
       </section>
 
-      <!-- Menu Section -->
       <section id="menu" class="menu-section">
         <h3 class="section-title">Menu Andalan Kami</h3>
         <div class="menu-grid">
@@ -257,7 +254,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
         </div>
       </section>
 
-      <!-- Order Section -->
       <section id="order" class="order-section">
         <div class="order-content">
           <h3 class="order-title">Siap Memesan?</h3>
@@ -267,7 +263,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       </section>
     </main>
 
-    <!-- Cart Modal -->
     <div class="cart-modal">
       <div class="cart-content">
         <div class="cart-header">
@@ -283,7 +278,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
       <p>&copy; 2026 Kopi IPK. Dibuat dengan passion</p>
     </footer>
