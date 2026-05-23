@@ -186,7 +186,7 @@ const generateWhatsApp = () => {
 
   cart.forEach((item) => {
     const itemTotal = item.price * item.quantity;
-    message += `• ${item.name} x${item.quantity} = Rp ${itemTotal.toLocaleString()}\n`;
+    message += `• ${item.name} x ${item.quantity} = Rp ${itemTotal.toLocaleString()}\n`;
   });
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -204,9 +204,12 @@ const generateWhatsApp = () => {
 
 const menuHTML = menuItems
   .map(
-    (item) => `
+    (item, index) => `
   <div class="menu-card">
-    <img src="${item.image}" alt="${item.name}" class="menu-image">
+    <div class="menu-image-container">
+      <img src="${item.image}" alt="${item.name}" class="menu-image">
+      ${index < 3 ? '<span class="badge">Bestseller 🔥</span>' : ""}
+    </div>
     <div class="card-header">
       <h4 class="card-title">${item.name}</h4>
     </div>
@@ -226,11 +229,12 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <header class="navbar">
       <div class="nav-content">
         <div class="logo-section">
-          <img src="/kopiipklogo.png" alt="Kopi IPK" class="logo-img">
+          <img src="/kopiipklogo1.png" alt="Kopi IPK" class="logo-img">
           <h1 class="brand-name">Kopi IPK</h1>
         </div>
         <nav class="nav-menu">
           <a href="#menu" class="nav-link">Menu</a>
+          <a href="#location" class="nav-link">Lokasi</a>
           <a href="#order" class="nav-link">Pesan</a>
           <button class="cart-btn" onclick="document.querySelector('.cart-modal').style.display = 'flex'">Keranjang (0)</button>
         </nav>
@@ -240,10 +244,28 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <main>
       <section class="hero">
         <div class="hero-content">
-          <img src="/kopiipklogo.png" alt="Kopi IPK Hero" class="hero-logo">
+          <img src="/kopiipklogo1.png" alt="Kopi IPK Hero" class="hero-logo">
           <h2 class="hero-title">Bahan Bakar Sesi Malam Anda</h2>
           <p class="hero-subtitle">Kopi premium yang disangrai sempurna untuk fokus. Tidak ada sampah, hanya kopi berkualitas tinggi yang akan membuat Anda tetap terjaga sepanjang malam.</p>
           <a href="#menu" class="btn btn-primary">Lihat Menu</a>
+        </div>
+        <img src="/bg-hero.jpg" alt="Background Kopi IPK" class="bg-hero">
+      </section>
+
+      <section class="features-section">
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>☕ Biji Kopi Pilihan</h3>
+            <p>Menggunakan 100% biji kopi Nusantara berkualitas yang disangrai oleh roaster profesional.</p>
+          </div>
+          <div class="feature-card">
+            <h3>🚀 Booster Fokus</h3>
+            <p>Diformulasikan khusus dengan takaran kafein yang pas untuk menemani kamu mengejar deadline.</p>
+          </div>
+          <div class="feature-card">
+            <h3>🛵 Layanan Cepat</h3>
+            <p>Pesan dari tempat dudukmu, dan kami akan menyiapkannya dalam sekejap mata.</p>
+          </div>
         </div>
       </section>
 
@@ -254,10 +276,61 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
         </div>
       </section>
 
+      <section id="location" class="location-section">
+        <div class="location-container">
+          <div class="location-content">
+            
+            <div class="location-info">
+              <h3 class="location-title">Kunjungi Kedai Kami</h3>
+              <p class="location-desc">Tempat ternyaman untuk nugas, ngoding, atau sekadar bersantai menikmati ekstraksi kopi terbaik di Surabaya.</p>
+              
+              <div class="info-list">
+                <div class="info-item">
+                  <div class="info-icon">📍</div>
+                  <div class="info-text">
+                    <strong>Alamat</strong>
+                    <span>Jl. Prof. Whisnu Nurhidayat No. 99, Kawasan Kampus Terpadu, Surabaya</span>
+                  </div>
+                </div>
+                
+                <div class="info-item">
+                  <div class="info-icon">🕒</div>
+                  <div class="info-text">
+                    <strong>Jam Operasional</strong>
+                    <span>Senin - Jumat: 08.00 - 02.00 WIB<br>Sabtu - Minggu: 10.00 - 04.00 WIB</span>
+                  </div>
+                </div>
+                
+                <div class="info-item">
+                  <div class="info-icon">🔌</div>
+                  <div class="info-text">
+                    <strong>Fasilitas</strong>
+                    <span>WiFi Kencang (100Mbps), Colokan di setiap meja, Ruang Ber-AC & Smoking Area.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="location-map">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126646.25708155986!2d112.63028258284536!3d-7.275443799999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fbf8381ac47f%3A0x3027a76e352be40!2sSurabaya%2C%20Surabaya%20City%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <section id="order" class="order-section">
         <div class="order-content">
-          <h3 class="order-title">Siap Memesan?</h3>
-          <p class="order-subtitle">Lewati antrian. Kirim pesanan Anda melalui WhatsApp.</p>
+          <h3 class="order-title">Siap Mengejar Target Hari Ini?</h3>
+          <p class="order-subtitle">Lewati antrian. Kirim pesanan Anda dengan mudah melalui WhatsApp.</p>
           <button class="btn btn-secondary" onclick="window.generateWhatsApp()">Pesan via WhatsApp</button>
         </div>
       </section>
@@ -279,7 +352,12 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     </div>
 
     <footer class="footer">
-      <p>&copy; 2026 Kopi IPK. Dibuat dengan passion</p>
+      <div class="footer-content">
+        <p>&copy; 2026 Kopi IPK. Dibuat dengan passion untuk pejuang IPK.</p>
+        <div class="social-links">
+           <span>Instagram: @kopi.ipk</span> | <span>Tiktok: @kopi.ipk</span>
+        </div>
+      </div>
     </footer>
   </div>
 `;
